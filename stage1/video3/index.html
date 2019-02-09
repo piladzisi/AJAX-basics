@@ -5,22 +5,35 @@
   <link href='//fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/main.css">
   <title>AJAX with JavaScript</title>
+  <script  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
   <script>
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function(){
-      if(xhr.readyState === 4) {
-        if(xhr.status === 200){
-        document.getElementById('ajax').innerHTML = xhr.responseText;
-          } else {
-            alert(xhr.statusText);
-          }
-      }
-    };
-    xhr.open('GET', 'sidebar.html');
     function sendAJAX(){
-      xhr.send();
-      document.getElementById('load').style.display = 'none';
-    }   
+      $.get('sidebar.html', function(response){
+        $('#ajax').html(response);
+      });
+      $('load').hide();
+    }
+    // function sendAJAX(){
+    // $('#ajax').load('sidebar.html');
+    // $('#load').hide();
+    // }
+    // var xhr = new XMLHttpRequest();
+    // xhr.onreadystatechange = function(){
+    //   if(xhr.readyState === 4) {
+    //     if(xhr.status === 200){
+    //     document.getElementById('ajax').innerHTML = xhr.responseText;
+    //       } else {
+    //         alert(xhr.statusText);
+    //       }
+    //   }
+    // };
+    // xhr.open('GET', 'sidebar.html');
+    // function sendAJAX(){
+    //   xhr.send();
+    //   document.getElementById('load').style.display = 'none';
+    // }   
   </script>
 </head>
 <body>
